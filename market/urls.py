@@ -10,6 +10,7 @@ urlpatterns = patterns(
         TransactionCreateView.as_view(), name="dashboard"),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^shop/', include('shop.urls', namespace='shop')),
 
     url(r'^$', 'django.contrib.auth.views.login',
         kwargs={'template_name': 'core/index.html'}, name="login"),

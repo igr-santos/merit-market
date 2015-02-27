@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from .exceptions import BuyError
+
 
 class Product(models.Model):
     name = models.CharField(
@@ -22,3 +24,45 @@ class Product(models.Model):
         _('Picture'),
         upload_to='shop/'
     )
+    created_at = models.DateTimeField(
+        _('Created at'),
+        auto_add_now=True
+    )
+
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.stok)
+
+    def buy(self, customer, qtty=1):
+        """
+        Check stok, price and save product
+        """
+        if (self.stok - qtty) < 0:
+            raise BuyError('Nao possui estoque para essa compra')
+
+        price_total = qtty * price
+        if (customer.hearts < price_total):
+            raise BuyError(
+                'Voce nao possui coracoes suficiente para comprar esse item'
+            )
+
+        self.stok -= qtty
+        self.save()
+        customer.hearts -= price_total
+        customer.save()
+
+        # cria um log de compra
+        BuyLog.objects.create(
+            purchased_for=customer,
+            product=self,
+            qtty=qtty,
+            price_total=price_total
+        )
+
+
+class BuyLog(models.Model):
+    purchased_at = models.DateTimeField(auto_add_now=True)
+    purchased_for = models.ForeignKey('core.Customer')
+    product = models.ForeignKey(Product)
+    qtty = models.PositiveIntegerField()
+    price_total = models.PositiveIntegerField()
+
