@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'django_gravatar',
     'core',
+    'shop',
 )
 
 MIDDLEWARE_CLASSES = (
