@@ -1,3 +1,4 @@
-Django>=1.7.4
-django-bootstrap3>=5.1.1
-django-gravatar2>=1.2.1
+Django==1.7.4
+django-bootstrap3==5.1.1
+django-gravatar2==1.2.1
+Pillow==2.7.0
