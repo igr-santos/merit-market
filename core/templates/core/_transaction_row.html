@@ -1,0 +1,14 @@
+{% load gravatar %}
+<div class="trans row">
+    <div class="col-xs-12">
+        <img class="img-circle" src="{% gravatar_url t.giver.user.email 75 %}">
+        <div class="members">
+            From <b>{{t.giver}}</b> > <b>{{t.receiver}}</b> {% include 'core/_heart_badge.html' with qtty=t.qtty %}
+        </div>
+        <div class="msg">
+            <blockquote class="text-muted">
+                {{t.comment}}
+            </blockquote>
+        </div>
+    </div>
+</div>

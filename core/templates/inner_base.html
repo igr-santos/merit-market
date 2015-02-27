@@ -1,34 +1,8 @@
 {% extends 'site_base.html' %}
+
 {% block side %}
 <h2>Last given hearts</h2>
 <div class="last-hearts">
-  <div class="trans">
-    <div class="members">
-      <a href="#">Guilherme > Igor (3<i class="glyphicon glyphicon-heart"></i>)</a>
-    </div>
-    <div class="msg">Lorem ipsum dolor sit amet.</div>
-  </div>
-  <div class="trans">
-    <div class="members">
-      <a href="#">Guilherme > Igor (3<i class="glyphicon glyphicon-heart"></i>)</a>
-    </div>
-    <div class="msg">Lorem ipsum dolor sit amet.</div>
-  </div>
-  <div class="trans">
-    <div class="members">
-      <a href="#">Guilherme > Igor (3<i class="glyphicon glyphicon-heart"></i>)</a>
-    </div>
-    <div class="msg">Lorem ipsum dolor sit amet.</div>
-  </div>
-</div>
-<h2>Top people of the week</h2>
-<div>
-  <div class="person">
-    <img src="https://avatars2.githubusercontent.com/u/681628?v=3&amp;s=75">
-    <p>
-      Guilherme Vierno <br>
-      15 <i class="glyphicon glyphicon-heart"></i>
-    </p>
-  </div>
+  {% include 'core/_last_transactions.html' %}
 </div>
 {% endblock %}

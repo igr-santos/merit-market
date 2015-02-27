@@ -7,79 +7,31 @@
   <div class="col-xs-12">
     <h1>{% trans 'Give my hearts' %}</h1>
 
-    <p>{% trans 'Hearts avaiable' %}: {{ user.customer.weekly_hearts }} <i class="glyphicon glyphicon-heart"></i></p>
+    <p>{% trans 'Hearts avaiable' %}: {% include 'core/_heart_badge.html' with qtty=user.customer.weekly_hearts %}</p>
 
     <form action="" method="POST">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <button class="btn btn-primary" type="submit">
-          Give!
-        </button>
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button class="btn btn-primary" type="submit">
+        Give!
+      </button>
     </form>
     <h2></h2>
   </div>
   <div class="col-xs-12">
     <h2>Hearts given to me this week</h2>
     <div class="received">
-      <div class="trans row">
-        <div class="col-xs-12">
-          <img src="https://avatars2.githubusercontent.com/u/681628?v=3&amp;s=75">
-          <div class="members">
-            <a href="#">Guilherme Vierno (3<i class="glyphicon glyphicon-heart"></i>)</a>
-          </div>
-          <div class="msg">Lorem ipsum dolor sit amet.</div>
-        </div>
-      </div>
-      <div class="trans row">
-        <div class="col-xs-12">
-          <img src="https://avatars2.githubusercontent.com/u/681628?v=3&amp;s=75">
-          <div class="members">
-            <a href="#">Guilherme Vierno (3<i class="glyphicon glyphicon-heart"></i>)</a>
-          </div>
-          <div class="msg">Lorem ipsum dolor sit amet.</div>
-        </div>
-      </div>
-      <div class="trans row">
-        <div class="col-xs-12">
-          <img src="https://avatars2.githubusercontent.com/u/681628?v=3&amp;s=75">
-          <div class="members">
-            <a href="#">Guilherme Vierno (3<i class="glyphicon glyphicon-heart"></i>)</a>
-          </div>
-          <div class="msg">Lorem ipsum dolor sit amet.</div>
-        </div>
-      </div>
+      {% for t in transactions_to_me %}
+      {% include "core/_transaction_row.html" %}
+      {% endfor %}
     </div>
   </div>
   <div class="col-xs-12">
-    <h2>My kudos this week</h2>
+    <h2>Hearts that i give</h2>
     <div class="received">
-      <div class="trans row">
-        <div class="col-xs-12">
-          <img src="https://avatars2.githubusercontent.com/u/681628?v=3&amp;s=75">
-          <div class="members">
-            <a href="#">Guilherme Vierno (3<i class="glyphicon glyphicon-heart"></i>)</a>
-          </div>
-          <div class="msg">Lorem ipsum dolor sit amet.</div>
-        </div>
-      </div>
-      <div class="trans row">
-        <div class="col-xs-12">
-          <img src="https://avatars2.githubusercontent.com/u/681628?v=3&amp;s=75">
-          <div class="members">
-            <a href="#">Guilherme Vierno (3<i class="glyphicon glyphicon-heart"></i>)</a>
-          </div>
-          <div class="msg">Lorem ipsum dolor sit amet.</div>
-        </div>
-      </div>
-      <div class="trans row">
-        <div class="col-xs-12">
-          <img src="https://avatars2.githubusercontent.com/u/681628?v=3&amp;s=75">
-          <div class="members">
-            <a href="#">Guilherme Vierno (3<i class="glyphicon glyphicon-heart"></i>)</a>
-          </div>
-          <div class="msg">Lorem ipsum dolor sit amet.</div>
-        </div>
-      </div>
+      {% for t in my_transactions %}
+      {% include "core/_transaction_row.html" %}
+      {% endfor %}
     </div>
   </div>
 </div>

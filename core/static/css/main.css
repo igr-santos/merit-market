@@ -293,3 +293,27 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+.trans.row .msg {
+    padding-left: 90px;
+    padding-top: 9px;
+}
+
+.badge.heart {
+    background-color: #373737;
+}
+
+.heart-color {
+    color: #FF4949;
+}
+
+.trans-min {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.trans-min img {
+    float: left;
+    margin-right: 12px;
+}

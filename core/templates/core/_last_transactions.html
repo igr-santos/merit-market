@@ -1,0 +1,13 @@
+{% load gravatar %}
+
+{% for t in last_transactions %}
+  <div class="row trans-min">
+    <div class="col-xs-12">
+      <img class="img-circle" src="{% gravatar_url t.giver.user.email 40 %}">
+      <div class="members">
+        <b>{{t.giver}}</b> > <b>{{t.receiver}}</b> {% include 'core/_heart_badge.html' with qtty=t.qtty %}
+      </div>
+      <div class="msg">{{t.comment}}</div>
+    </div>
+  </div>
+{% endfor %}

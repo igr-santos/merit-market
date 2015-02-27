@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/chosen.min.css">
     <script src="{{ STATIC_URL }}js/vendor/modernizr-2.8.3.min.js"></script>
+
   </head>
   <body>
     <!--[if lt IE 8]>
@@ -36,13 +38,13 @@
           {% if user.is_authenticated %}
           <div class="navbar-header">
             <a href="{% url 'dashboard' %}">
-              {% gravatar user.email 50 %}
+              <img src="{% gravatar_url user.email 50 %}" class="img-circle">
             </a>
           </div>
           <ul class="nav navbar-nav">
             <li>
               <a href="{% url 'dashboard' %}">
-                {{ user.customer.weekly_hearts }} <i class="glyphicon glyphicon-star-empty"></i>
+                Welcome {{user.username}} - You have {% include 'core/_heart_badge.html' with qtty=user.customer.weekly_hearts %} hearts
               </a>
             </li>
           </ul>
@@ -72,6 +74,8 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="{{ STATIC_URL }}js/chosen.jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.mask.min.js"></script>
     <script src="{{ STATIC_URL }}js/vendor/bootstrap.min.js"></script>
     <script src="{{ STATIC_URL }}js/plugins.js"></script>
     <script src="{{ STATIC_URL }}js/main.js"></script>

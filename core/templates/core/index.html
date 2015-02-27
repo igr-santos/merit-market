@@ -4,7 +4,11 @@
 {% block content %}
 <div class="jumbotron">
   <h1>Welcome to our Merit Market!</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis saepe qui rerum est eaque iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ad nostrum fugiat.</p>
+  <p>
+    {% blocktrans %}
+    Please insert your login info and start spreading your love <i class="glyphicon glyphicon-heart heart-color"></i>
+    {% endblocktrans %}
+  </p>
 
   {% if not user.is_authenticated %}
   <form class="form-horizontal" method="POST">
@@ -13,9 +17,7 @@
     {% bootstrap_form form %}
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">{% trans 'Sign in' %}</button>
-      </div>
+      <button type="submit" class="btn btn-default">{% trans 'Sign in' %}</button>
     </div>
   </form>
   {% endif %}
