@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseForbidden
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
@@ -22,3 +23,17 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('shop:product_list')
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            return super(ProductCreateView, self).post(
+                request, *args, **kwargs
+            )
+        return HttpResponseForbidden()
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            return super(ProductCreateView, self).get(
+                request, *args, **kwargs
+            )
+        return HttpResponseForbidden()
