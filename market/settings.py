@@ -86,6 +86,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDITA_ROOT = '/media/'
+
 LOGIN_URL = '/'
 
 LOGIN_REDIRECT_URL = '/dashboard/'

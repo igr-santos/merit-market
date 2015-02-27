@@ -1,3 +1,5 @@
+import os
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -22,11 +24,11 @@ class Product(models.Model):
     )
     picture = models.ImageField(
         _('Picture'),
-        upload_to='shop/'
+        upload_to=os.path.join(settings.MEDIA_ROOT, 'shop/')
     )
     created_at = models.DateTimeField(
         _('Created at'),
-        auto_add_now=True
+        auto_now_add=True
     )
 
     def __str__(self):
@@ -60,7 +62,7 @@ class Product(models.Model):
 
 
 class BuyLog(models.Model):
-    purchased_at = models.DateTimeField(auto_add_now=True)
+    purchased_at = models.DateTimeField(auto_now_add=True)
     purchased_for = models.ForeignKey('core.Customer')
     product = models.ForeignKey(Product)
     qtty = models.PositiveIntegerField()

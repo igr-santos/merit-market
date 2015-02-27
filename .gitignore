@@ -41,3 +41,5 @@ nosetests.xml
 .project
 .pydevproject
 
+# Ignore mediafiles
+media/*
