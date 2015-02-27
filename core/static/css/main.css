@@ -264,7 +264,7 @@ textarea {
     }
 
     /*
-     * Printing Tables:
+     * Printing Tales:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
 
@@ -294,6 +294,10 @@ textarea {
     }
 }
 
+h1, h2 {
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+}
+
 .trans.row .msg {
     padding-left: 90px;
     padding-top: 9px;
@@ -307,7 +311,9 @@ textarea {
     color: #FF4949;
 }
 
-.trans-min {
+.trans-min,
+.top-giver,
+.top-receiver {
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -316,4 +322,30 @@ textarea {
 .trans-min img {
     float: left;
     margin-right: 12px;
+}
+
+.top-giver,
+.top-receiver {
+    margin-bottom: 15px;
+}
+
+.top-giver img,
+.top-receiver img {
+    margin-right: 12px;
+}
+
+.top-giver .info,
+.top-receiver .info,{
+    padding-top: 10px;
+}
+
+.sidebar {
+    border-left: 1px solid #eee;
+    -webkit-box-shadow: -4px 1px 5px -4px rgba(133,133,133,0.8);
+    -moz-box-shadow: -4px 1px 5px -4px rgba(133,133,133,0.8);
+    box-shadow: -4px 1px 5px -4px rgba(133,133,133,0.8);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
 }

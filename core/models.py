@@ -1,5 +1,24 @@
+from datetime import timedelta
+from datetime import datetime
 from django.db import models
 from django.conf import settings
+
+
+def week_range(date=None):
+    """
+    Gently get from
+    https://bradmontgomery.net/blog/2013/03/07/calculate-week-range-date/
+    """
+    if not date:
+        date = datetime.now()
+
+    year, week, dow = date.isocalendar()
+    if dow == 7:
+        start_date = date
+    else:
+        start_date = date - timedelta(dow)
+    end_date = start_date + timedelta(6)
+    return (start_date, end_date)
 
 
 class Customer(models.Model):

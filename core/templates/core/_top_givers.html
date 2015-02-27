@@ -1,0 +1,12 @@
+{% load gravatar i18n %}
+
+{% for c in top_givers %}
+    <div class="row top-giver">
+        <div class="col-xs-12">
+            <img class="img-circle pull-left" src="{% gravatar_url c.user.email 40 %}">
+            <div class="info">
+                <b>{{c.user.username}}</b> {% trans 'has given' %} {% include 'core/_heart_badge.html' with qtty=c.given__qtty__sum %} hearts this week!
+            </div>
+        </div>
+    </div>
+{% endfor %}
