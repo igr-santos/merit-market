@@ -39,12 +39,12 @@ class Product(models.Model):
         Check stok, price and save product
         """
         if (self.stok - qtty) < 0:
-            raise BuyError('Nao possui estoque para essa compra')
+            raise BuyError(_('Insufficient stock to buy'))
 
         price_total = qtty * price
         if (customer.hearts < price_total):
             raise BuyError(
-                'Voce nao possui coracoes suficiente para comprar esse item'
+                _('Failing hearts for purchase, be nicer to his teammates')
             )
 
         self.stok -= qtty
@@ -52,7 +52,7 @@ class Product(models.Model):
         customer.hearts -= price_total
         customer.save()
 
-        # cria um log de compra
+        # create log for buy
         BuyLog.objects.create(
             purchased_for=customer,
             product=self,
