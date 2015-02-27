@@ -36,6 +36,9 @@ To reset the amount of hearts each person has run (you can use in a cron):
 - Product shop
 - Dashboard and sidebar events.
 - Migrate to django-cron?
+- Transaction audit
+- E-mail with 'hearts received' notification
+- Translation
 
 
 ## License

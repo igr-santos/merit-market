@@ -54,13 +54,18 @@ class Transaction(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Validates gift for yourself, and greater amount donated
-        his stock of hearts
+        Override django's obj.save() and adds validations.
+
+        TODO: should use forms instead.
+
+        Validates if the gift is for yourself, and if the amount donated is
+        greater than the stock of hearts.
         """
         if self.receiver == self.giver:
-            raise ValueError('Receive most be different from giver')
+            raise ValueError('Receiver must be different from giver')
         elif self.giver.weekly_hearts < self.qtty:
-            raise ValueError('It has no more hearts to donate this week')
+            raise ValueError('Please select an amount smaller than your \
+                 available hearts')
 
         self.giver.weekly_hearts -= self.qtty
         self.giver.save()
