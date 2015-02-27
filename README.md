@@ -1,7 +1,8 @@
 # Merit Market
 
 Merit market is an application developed to give co-workers recognition for
-their actions. It uses the merit money idea from Mangement 3.0.
+their actions. It uses the merit money idea from Mangement 3.0 with the
+currency in the for of 'hearts'.
 
 
 ## Installation
@@ -24,12 +25,17 @@ Run the project:
 
     $ python manage.py runserver
 
+To reset the amount of hearts each person has run (you can use in a cron):
+
+    $ python manage.py weekly_hearts
+
 
 ## TODO
+
 - Tests
-- Update this README
 - Product shop
 - Dashboard and sidebar events.
+- Migrate to django-cron?
 
 
 ## License
