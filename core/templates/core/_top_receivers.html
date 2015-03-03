@@ -1,11 +1,10 @@
 {% load gravatar i18n %}
-
 {% for c in top_receivers %}
     <div class="row top-receiver">
         <div class="col-xs-12">
             <img class="img-circle pull-left" src="{% gravatar_url c.user.email 40 %}">
             <div class="info">
-                <b>{{c.user.username}}</b> {% trans 'has received' %} {% include 'core/_heart_badge.html' with qtty=c.received__qtty__sum %} hearts this week!
+                <b>{{c}}</b> {% trans 'has received' %} {% include 'core/_heart_badge.html' with qtty=c.received__qtty__sum %} hearts this week!
             </div>
         </div>
     </div>
