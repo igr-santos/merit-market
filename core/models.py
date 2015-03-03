@@ -40,7 +40,11 @@ class Customer(models.Model):
         verbose_name_plural = "Customers"
 
     def __str__(self):
-        return '{}'.format(self.user.username)
+        if self.user.get_full_name():
+            name = self.user.get_full_name()
+        else:
+            name = self.user.username
+        return '{}'.format(name)
 
 
 class Transaction(models.Model):
