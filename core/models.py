@@ -39,12 +39,12 @@ class Customer(models.Model):
         verbose_name = "Customer"
         verbose_name_plural = "Customers"
 
-    def __str__(self):
+    def __unicode__(self):
         if self.user.get_full_name():
             name = self.user.get_full_name()
         else:
             name = self.user.username
-        return '{}'.format(name)
+        return name
 
 
 class Transaction(models.Model):
