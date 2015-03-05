@@ -39,6 +39,8 @@ To reset the amount of hearts each person has run (you can use in a cron):
 - Transaction audit
 - E-mail with 'hearts received' notification
 - Translation
+- Forgot password
+- Display user's total hearts
 
 
 ## License
