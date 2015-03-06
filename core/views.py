@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.contrib.auth.views import login
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
 from templated_email import send_templated_mail
@@ -11,8 +11,11 @@ from .mixins import LoginRequiredMixin
 from .forms import TransactionForm
 
 
-class IndexView(TemplateView):
-    template_name = 'core/index.html'
+def index(request, **kwargs):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse("dashboard"))
+    else:
+        return login(request, **kwargs)
 
 
 class TransactionCreateView(LoginRequiredMixin, CreateView):
