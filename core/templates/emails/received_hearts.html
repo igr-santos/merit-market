@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% block subject %}{% trans 'You received hearts from' %} {{ transaction.giver.user.get_full_name }}{% endblock %}
+
+{% block html %}
+
+<p>{% trans 'Congratulations' %} {{ transaction.receiver.user.get_full_name }}!</p>
+
+<p>{% trans 'You received' %} <bold>{{ transaction.qtty }}</bold> {% trans 'heart(s) from' %} {{ transaction.giver.user.get_full_name }}.
+<bold>{{ transaction.giver.user.get_full_name }}</bold> {% trans 'says' %} {{ transaction.comment }}.</p>
+
+<p>{% trans 'Access' %} <a href="{{ url_domain }}">Merit Market</a>, {% trans 'to spread the love to your friends' %}.</p>
+
+{% endblock %}

@@ -103,6 +103,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "core.context_processors.top_users",
 )
 
+# Configure django-templated-email
+# https://github.com/bradwhittington/django-templated-email#your-template
+
+TEMPLATED_EMAIL_TEMPLATE_DIR = 'emails/'
+TEMPLATED_EMAIL_FILE_EXTENSION = 'html'
+
+FROM_EMAIL = 'no-reply@example.com'
+
+
 try:
     from local_settings import *
 except ImportError:

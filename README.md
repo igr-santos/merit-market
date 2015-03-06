@@ -30,6 +30,11 @@ To reset the amount of hearts each person has run (you can use in a cron):
     $ python manage.py weekly_hearts
 
 
+To send notifications for users that received hearts, you need to configure django's email settings:
+
+[https://docs.djangoproject.com/en/1.7/topics/email/#smtp-backend](https://docs.djangoproject.com/en/1.7/topics/email/#smtp-backend)
+
+
 ## TODO
 
 - Tests

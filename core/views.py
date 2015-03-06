@@ -1,7 +1,10 @@
+from django.conf import settings
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
+
+from templated_email import send_templated_mail
 
 from .models import Transaction
 from .mixins import LoginRequiredMixin
@@ -30,6 +33,19 @@ class TransactionCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.giver = self.request.user.customer
         self.object.save()
+
+        # send email for user receives heart
+        if hasattr(settings, 'FROM_EMAIL'):
+            send_templated_mail(
+                template_name='received_hearts',
+                from_email=settings.FROM_EMAIL,
+                recipient_list=[self.object.receiver.user.email, ],
+                context={
+                    'transaction': self.object,
+                    'url_domain': self.request.build_absolute_uri()
+                }
+            )
+
         return HttpResponseRedirect(self.get_absolute_url())
 
     def get_absolute_url(self):
